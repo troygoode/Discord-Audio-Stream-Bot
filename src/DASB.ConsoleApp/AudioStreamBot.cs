@@ -171,7 +171,9 @@ namespace DASB {
                     for (int i = 0; i < devices.Length; i++) {
                         if (devices[i].name == Config.speakRecordingDevice) {
                             recordDevice = i;
-                            break;
+                            Console.WriteLine("* " + devices[i].name);
+                        } else {
+                            Console.WriteLine("_ " + devices[i].name);
                         }
                     }
                     if (recordDevice < 0) {
@@ -425,7 +427,9 @@ namespace DASB {
                     if (recordChannel == 0) {
                         recordChannel = Bass.BASS_RecordStart(SAMPLE_RATE, CHANNEL_COUNT, BASSFlag.BASS_RECORD_PAUSE, recordProc, IntPtr.Zero);
                     }
-                    Bass.BASS_ChannelPlay(recordChannel, false);
+                    if (!Bass.BASS_ChannelPlay(recordChannel, false)) {
+                        Log(LogSeverity.Error, "Failed to begin ChannelPlay.");
+                    }
 
                     await Discord.SetGameAsync(Config.speakRecordingDevice ?? "Default Recording Device", Utils.link_twitchDummyStream, StreamType.Twitch);
                 }
