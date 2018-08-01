@@ -106,8 +106,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Un4seen.Bass">
-      <HintPath>..\..\lib\managed\Un4seen.Bass.dll</HintPath>
+    <Reference Include="Un4seen.Bass, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Un4seen.Bass.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +158,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\dasb.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bass.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bassnet.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bass_fx.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Un4seen.Bass.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
