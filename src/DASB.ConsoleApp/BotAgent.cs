@@ -80,5 +80,9 @@ namespace DASB {
         public string Say(BotString @string, params object[] args) {
             return string.Format(Say(@string), args);
         }
+
+        public CommandAttribute Help(MethodInfo method, CommandAttribute cmd) {
+            return cmd;
+        }
     }
 }
