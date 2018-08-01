@@ -1,4 +1,5 @@
-﻿using DASB.Properties;
+﻿using DASB;
+using DASB.Properties;
 using Discord;
 using Discord.Audio;
 using Discord.Commands;
@@ -305,12 +306,20 @@ namespace DASB {
 
             if (Discord.Guilds.Count == 0) {
                 showNoGuildFound();
+            } else {
+                if (Config.autoJoinChannel != null) {
+                    foreach (var guild in Discord.Guilds) {
+                        var voiceChannel = guild.VoiceChannels.FirstOrDefault(c => c.Name == Config.autoJoinChannel);
+                        if (voiceChannel != null) {
+                            JoinVoice(voiceChannel);
+                        }
+                    }
+                }
             }
         }
 
         private async Task Discord_JoinedGuild(SocketGuild guild) {
             if (Discord.Guilds.Count == 1) {
-
             }
         }
 

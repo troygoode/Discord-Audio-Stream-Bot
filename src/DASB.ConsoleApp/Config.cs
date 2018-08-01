@@ -17,6 +17,11 @@ namespace DASB {
         public string botToken = null;
 
         /// <summary>
+        /// voice channel to auto-join, if any
+        /// </summary>
+        public string autoJoinChannel = null;
+
+        /// <summary>
         /// flag wether the bot should speak in voice chat
         /// </summary>
         public bool speakEnabled = true;
@@ -87,6 +92,7 @@ namespace DASB {
             // #general
             stack.Push("general");
             botToken = (string)stack.Get("botToken");
+            autoJoinChannel = (string)stack.Get("autoJoinChannel");
             stack.Pop();
             // #
 
@@ -149,6 +155,7 @@ namespace DASB {
             // #general
             stack.PushNew("general");
             stack.Set("botToken", botToken);
+            stack.Set("autoJoinChannel", autoJoinChannel);
 
             stack.Pop();
             // #
